@@ -22,24 +22,24 @@ const Login = (props) => {
             email: "",
             passowrd: "",
         });
-
-        const res = await fetch("/user/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-        });
-        const data = await res.json();
-        if (data.errors) {
-            setError(data.errors);
-            console.log(error);
-            setIsLoading(false);
-        } else {
-            setIsLoading(false);
-            props.closeModalLogin();
-            navigate("/dashboard");
-        }
+        navigate("/dashboard");
+        // const res = await fetch("/user/login", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(user),
+        // });
+        // const data = await res.json();
+        // if (data.errors) {
+        //     setError(data.errors);
+        //     console.log(error);
+        //     setIsLoading(false);
+        // } else {
+        //     setIsLoading(false);
+        //     props.closeModalLogin();
+        //     navigate("/dashboard");
+        // }
     };
 
     return (
