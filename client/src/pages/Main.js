@@ -10,18 +10,18 @@ export default function Main(props) {
   const navigate = useNavigate();
   const [viewProfile, setViewProfile] = useState("hidden");
   const [expense, setExpense] = useState([]);
-  // useEffect(() => {
-  //   async function HandleAllExpense() {
-  //     const res = await fetch("/expense/viewexpense");
-  //     const data = await res.json();
-  //     if (data.errors) {
-  //       navigate("/");
-  //     } else {
-  //       setExpense(data.expenses);
-  //     }
-  //   }
-  //   HandleAllExpense();
-  // }, []);
+  useEffect(() => {
+    async function HandleAllExpense() {
+      const res = await fetch("/expense/viewexpense");
+      const data = await res.json();
+      if (data.errors) {
+        navigate("/");
+      } else {
+        setExpense(data.expenses);
+      }
+    }
+    HandleAllExpense();
+  }, []);
 
   return (
     <>

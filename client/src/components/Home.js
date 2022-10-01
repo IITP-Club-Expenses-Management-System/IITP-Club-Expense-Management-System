@@ -64,51 +64,51 @@ export default function Home(props) {
     };
     console.log(date);
     const getHomeChartdata = async (e) => {
-      // const res = await fetch("/expense/viewexpenseinrange", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(date),
-      // });
+      const res = await fetch("/expense/viewexpenseinrange", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(date),
+      });
 
-      // let data = await res.json();
+      let data = await res.json();
 
-      // if (data.errors) {
-      //   navigate("/");
-      // } else {
-      //   const Segregated = Segregator(data.expense);
-      //   TotalSpent = Segregated[1];
-      //   SetExpenseData({
-      //     datasets: [
-      //       {
-      //         label: "Expense",
-      //         data: Object.values(Segregated[0]),
-      //         borderColor: "black",
-      //         backgroundColor: [
-      //           "rgba(255, 99, 132, 0.4)",
-      //           "rgba(255, 159, 64, 0.4)",
-      //           "rgba(255, 205, 86, 0.4)",
-      //           "rgba(75, 192, 192, 0.4)",
-      //           "rgba(54, 162, 235, 0.4)",
-      //           "rgba(153, 102, 255, 0.4)",
-      //           "rgba(201, 203, 207, 0.4)",
-      //         ],
-      //         borderColor: [
-      //           "rgb(255, 99, 132)",
-      //           "rgb(255, 159, 64)",
-      //           "rgb(255, 205, 86)",
-      //           "rgb(75, 192, 192)",
-      //           "rgb(54, 162, 235)",
-      //           "rgb(153, 102, 255)",
-      //           "rgb(201, 203, 207)",
-      //         ],
-      //         borderWidth: 1,
-      //       },
-      //     ],
-      //     labels: Object.keys(Segregated[0]),
-      //   });
-      // }
+      if (data.errors) {
+        navigate("/");
+      } else {
+        const Segregated = Segregator(data.expense);
+        TotalSpent = Segregated[1];
+        SetExpenseData({
+          datasets: [
+            {
+              label: "Expense",
+              data: Object.values(Segregated[0]),
+              borderColor: "black",
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.4)",
+                "rgba(255, 159, 64, 0.4)",
+                "rgba(255, 205, 86, 0.4)",
+                "rgba(75, 192, 192, 0.4)",
+                "rgba(54, 162, 235, 0.4)",
+                "rgba(153, 102, 255, 0.4)",
+                "rgba(201, 203, 207, 0.4)",
+              ],
+              borderColor: [
+                "rgb(255, 99, 132)",
+                "rgb(255, 159, 64)",
+                "rgb(255, 205, 86)",
+                "rgb(75, 192, 192)",
+                "rgb(54, 162, 235)",
+                "rgb(153, 102, 255)",
+                "rgb(201, 203, 207)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+          labels: Object.keys(Segregated[0]),
+        });
+      }
     };
     async function handleGetBudget() {
       const res = await fetch("/expense/getBudget");
@@ -163,7 +163,7 @@ export default function Home(props) {
               }}
             >
               <span className="inline-block mt-2 cursor-pointer">
-                <img className="ml-2 w-5" src={Popup}></img>
+                <img className="ml-2 w-5" src={Popup} alt=""></img>
               </span>
             </button>
             {tooltip ? (

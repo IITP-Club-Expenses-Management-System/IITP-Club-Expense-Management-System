@@ -4,6 +4,9 @@ import { Routes, Route } from "react-router-dom"
 import Modal from "react-modal";
 import LandingPage from "./pages/LandingPage";
 import DashBoard from "./pages/DashBoard";
+import ConfirmDelete from './pages/ConfirmDelete';
+import AddExpense from './components/AddExpense';
+import SetBudget from './components/SetBudget';
 import Main from './pages/Main';
 import { Scrollbars } from "react-custom-scrollbars";
 import Login from "./components/Login"
@@ -117,7 +120,7 @@ function App() {
               openModalLogin={openModalLogin}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn} />} />
-              <Route
+          <Route
             path="dashboard"
             element={
               <DashBoard
@@ -137,8 +140,40 @@ function App() {
               />
             }
           />
+          {/* <Route
+            path="daily"
+            element={
+              <MainDaily
+                setDeleteId={setDeleteId}
+                openModalConfirm={openModalConfirm}
+              />
+            }
+          ></Route>
+          <Route
+            path="analysis"
+            element={
+              <MainAnalysis
+                setDeleteId={setDeleteId}
+                openModalConfirm={openModalConfirm}
+              />
+            }
+          />
+          <Route
+            path="dailyspendanalysis"
+            element={<MainSpendAnalysis />}
+          />
+
+          <Route
+            path="daily"
+            element={
+              <MainDaily
+                setDeleteId={setDeleteId}
+                openModalConfirm={openModalConfirm}
+              />
+            }
+          /> */}
         </Routes>
-        
+
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModalSignup}
@@ -174,74 +209,53 @@ function App() {
           <button onClick={closeModalExpense}>
             <RiCloseCircleFill />
           </button>
-          {/* <AddExpense closeModalExpense={closeModalExpense} /> */}
+          <AddExpense closeModalExpense={closeModalExpense} />
         </Modal>
         <Modal
-        isOpen={modalIsOpenExpense}
-        onRequestClose={closeModalExpense}
-        style={customStyles}
-      >
-        <button onClick={closeModalExpense}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <AddExpense closeModalExpense={closeModalExpense} />
-      </Modal>
-      <Modal
-        isOpen={modalIsOpenBudget}
-        onRequestClose={closeModalBudget}
-        style={customStyles}
-      >
-        <button onClick={closeModalBudget}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <SetBudget closeModalBudget={closeModalBudget} />
-      </Modal>
-      <Modal
-        isOpen={modalisOpenConfirm}
-        onRequestClose={closeModalConfirm}
-        style={customStyles}
-      >
-        <button onClick={closeModalConfirm}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <ConfirmDelete
-          deleteId={deleteId}
-          closeModalConfirm={closeModalConfirm}
-        />
-      </Modal>
+          isOpen={modalIsOpenBudget}
+          onRequestClose={closeModalBudget}
+          style={customStyles}
+        >
+          <button onClick={closeModalBudget}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <SetBudget closeModalBudget={closeModalBudget} />
+        </Modal>
+        <Modal
+          isOpen={modalisOpenConfirm}
+          onRequestClose={closeModalConfirm}
+          style={customStyles}
+        >
+          <button onClick={closeModalConfirm}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <ConfirmDelete
+            deleteId={deleteId}
+            closeModalConfirm={closeModalConfirm}
+          />
+        </Modal>
 
       </div>
     </Scrollbars >

@@ -29,7 +29,7 @@ export default function List(props) {
         </svg>
       </div>
       <div className="bg-jp-black rounded-full lg:w-2/3 w-fit  h-12 relative top-3 p-2 mb-8 lg:mb-3">
-        <img src={Money} className="h-7 w-7 mt-1"></img>
+        <img src={Money} className="h-7 w-7 mt-1" alt=""></img>
       </div>
       <div className="lg:col-span-4 ml-3 lg:ml-0 mt-2 lg:mt-2 ">
         <div className="flex">
