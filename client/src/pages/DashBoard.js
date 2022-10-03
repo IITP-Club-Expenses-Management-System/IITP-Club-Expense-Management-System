@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import mainMenu from "../assets/mobile_bar.png";
 import closeMenu from "../assets/close.png";
-
-// import Home from "../components/Home";
-// import List from "../components/List";
 import Profile from "../components/Profile";
-// import ProfileExpand from "../components/ProfileExpand";
+
 export default function DashBoard(props) {
   const navigate = useNavigate();
   const [active, setActive] = useState("1");
@@ -23,26 +20,26 @@ export default function DashBoard(props) {
     setActive("3");
   }
 
-//   const handleLogOut = async () => {
-//     const res = await fetch("/user/logout");
-//     props.setIsLoggedIn(false);
-//     navigate("/");
-//   };
+  const handleLogOut = async () => {
+    const res = await fetch("/user/logout");
+    props.setIsLoggedIn(false);
+    navigate("/");
+  };
 
-//   useEffect(() => {
-//     const checklogin = async () => {
-//       const res = await fetch("/user/auth");
-//       const data = await res.json();
+  useEffect(() => {
+    const checklogin = async () => {
+      const res = await fetch("/user/auth");
+      const data = await res.json();
 
-//       if (data.msg == "User Login Found") {
-//         props.setIsLoggedIn(true);
-//       } else {
-//         navigate("/");
-//         props.setIsLoggedIn(false);
-//       }
-//     };
-//     checklogin();
-//   }, []);
+      if (data.msg == "User Login Found") {
+        props.setIsLoggedIn(true);
+      } else {
+        navigate("/");
+        props.setIsLoggedIn(false);
+      }
+    };
+    checklogin();
+  }, []);
 
   return (
     <div>
@@ -170,7 +167,7 @@ export default function DashBoard(props) {
                       <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
                   </span>
-                 Club Expenses
+                  Club Expenses
                 </li>
               </Link>
               <Link to="/dashboard/analysis">
@@ -223,7 +220,7 @@ export default function DashBoard(props) {
               </Link>
               <div className="ml-6  mt-4 bottom-5 left-16 pb-6 ">
                 <button
-                //   onClick={handleLogOut}
+                  onClick={handleLogOut}
                   className="bg-mj-yellow px-4 py-3 flex rounded-md font-bold duration-300 ease-out hover:scale-110"
                 >
                   <span>
@@ -273,7 +270,7 @@ export default function DashBoard(props) {
         </div>
         <div className="hidden lg:block lg:absolute bottom-5 left-16">
           <button
-            // onClick={handleLogOut}
+            onClick={handleLogOut}
             className="bg-mj-yellow px-4 py-3 flex rounded-md font-bold duration-300 ease-out hover:scale-110"
           >
             <span>
